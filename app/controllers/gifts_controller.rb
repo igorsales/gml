@@ -4,11 +4,13 @@ class GiftsController < ApplicationController
   def index
     @user = current_user
     @gift = Gift.new    
-    @gifts = Gift.find(:all)
+    @gifts = @user.gifts.find(:all)
+    @exchanges = @user.exchanges.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @gifts }
+      format.json { render :layout => false, :json => @gifts.to_json }
     end
   end
 
@@ -20,6 +22,7 @@ class GiftsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @gift }
+      format.json { render :layout => false, :json => @gift.to_json }
     end
   end
 
@@ -50,7 +53,9 @@ class GiftsController < ApplicationController
         flash[:notice] = 'Gift idea was successfully added.'
         format.html { redirect_to :action => :index }
         format.xml  { render :xml => @gift, :status => :created, :location => @gift }
+	format.json { render :json => @gift.to_json, :status => :created }
       else
+	format.json { render :json => @gift.to_json }
         format.html { render :action => "new" }
         format.xml  { render :xml => @gift.errors, :status => :unprocessable_entity }
       end
@@ -88,8 +93,15 @@ class GiftsController < ApplicationController
   
   def show_wishlist
     @member = User.find(params[:id])
+    @exchanges = current_user.exchanges.find(:all)
     @wanted_items = @member.gifts.find(:all, :conditions => ["purchased=?", false])
     @purchased_items = @member.gifts.find(:all, :conditions => ["purchased=?", true])
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @wanted_items }
+      format.json { render :layout => false, :json => @wanted_items.to_json }
+    end
   end
   
   def purchased
@@ -116,7 +128,8 @@ class GiftsController < ApplicationController
     gifts.each do |gift|
      gift.position = params['gift-list'].index(gift.id.to_s) + 1
       gift.save
-   end
+    end
    render :nothing => true
-  end              
+  end
+                
 end

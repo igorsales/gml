@@ -8,6 +8,7 @@ class ExchangesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @exchanges }
+      format.json { render :layout => false, :json => @exchanges.to_json }
     end
   end
 
@@ -19,6 +20,7 @@ class ExchangesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @exchange }
+      format.json { render :layout => false, :json => @exchange.to_json }
     end
   end
 
@@ -27,7 +29,6 @@ class ExchangesController < ApplicationController
   def new
     @exchange = Exchange.new
     @exchange.users.build
-    @fieldset_name = "Test1"
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +45,7 @@ class ExchangesController < ApplicationController
   # POST /exchanges.xml
   def create
     @exchange = Exchange.new(params[:exchange])
-
+    # Save exchange and subscribe current_user to newly created exchange
     respond_to do |format|
       if @exchange.save
         subscriptions = current_user.exchanges.collect(&:id) + [@exchange.id]
@@ -80,6 +81,7 @@ class ExchangesController < ApplicationController
   def show_members
     @exchange = Exchange.find(params[:id])
     @members = @exchange.users
+    @exchanges = current_user.exchanges.find(:all)
   end
   
   # DELETE /exchanges/1
