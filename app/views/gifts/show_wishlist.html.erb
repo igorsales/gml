@@ -6,8 +6,9 @@
   <ul id="gift-list">
   <% for wish in @wanted_items %>
     <class id="item_<%= wish.id %>">
-      <%= check_box_tag "gifts_id[]", wish.id%>
-      <%= wish.name %><br>
+	<input type='checkbox' id='gifts_id[<%= wish.id %>]' name='gifts_id[]' value='<%= wish.id %>'>
+      <!-- <%= check_box_tag "gifts_id[]", wish.id%> -->
+      <label for='gifts_id[<%= wish.id %>]'><%= wish.name %></label><br>
     </class>
   <% end %>
   </ul><br>
