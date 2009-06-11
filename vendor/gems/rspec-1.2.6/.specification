@@ -415,8 +415,6 @@ files:
 - spec/support/macros.rb
 has_rdoc: true
 homepage: http://rspec.info
-licenses: []
-
 post_install_message: |
   **************************************************
   
@@ -431,6 +429,7 @@ rdoc_options:
 - --main
 - README.rdoc
 require_paths: 
+- bin
 - lib
 required_ruby_version: !ruby/object:Gem::Requirement 
   requirements: 
@@ -447,7 +446,7 @@ required_rubygems_version: !ruby/object:Gem::Requirement
 requirements: []
 
 rubyforge_project: rspec
-rubygems_version: 1.3.2
+rubygems_version: 1.3.1
 signing_key: 
 specification_version: 3
 summary: rspec 1.2.6

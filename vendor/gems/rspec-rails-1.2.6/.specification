@@ -232,8 +232,6 @@ files:
 - spec/spec_helper.rb
 has_rdoc: true
 homepage: http://rspec.info
-licenses: []
-
 post_install_message: |
   **************************************************
   
@@ -269,7 +267,7 @@ required_rubygems_version: !ruby/object:Gem::Requirement
 requirements: []
 
 rubyforge_project: rspec
-rubygems_version: 1.3.2
+rubygems_version: 1.3.1
 signing_key: 
 specification_version: 3
 summary: rspec-rails 1.2.6
