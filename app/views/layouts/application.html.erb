@@ -20,35 +20,12 @@
 		<%= render :partial => 'layouts/tabs' %>
 	</div>		
 	<div id="content">
-			<%= render :partial => 'layouts/flash', :locals => { :flash => flash } %>
-			<% unless @omit_h1 -%>
-   			<h1><%=h @title %></h1>
-			<% end -%>
-			<%= yield %>
-		</div>
-		<div id="left">
-			<div class="box">
-					<h2>News :</h2>	
-					<p>Sandy has added 4 items to her wish list<br />
-					<i>One of the items is 30% off at Amazon</i></p>
-					<p>You've been assigned Rusty in the Griswald Family Christmas exchange</p>
-			</div>
-            <div class="box">
-                <% if @exchanges %>
-					<h2>Exchanges :</h2>
-					<ul>
-                        <% for exchange in @exchanges %>
-						    <li><%= link_to "#{exchange.name}", :controller => 'exchanges', :action => 'show_members', :id => exchange.id %></li>
-						<% end %>
-					</ul>
-                <% end %>
-                <%= link_to 'Start new exchange', new_exchange_url %>
-            </div>
-		  <div class="box">
-				<div style="font-size: 0.8em;">Design by <a href="#">GML ltd.</a></div>
-			</div>
-		</div>
-	</div>
-
+        <%= render :partial => 'layouts/flash', :locals => { :flash => flash } %>
+        <% unless @omit_h1 -%>
+   		<h1><%=h @title %></h1>
+		<% end -%>
+		<%= display_flash_message %>
+		<%= yield %>
+    </div>
 </body>
 </html>
