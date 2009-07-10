@@ -1,6 +1,6 @@
 class SettingsController < ApplicationController
 
-  before_filter :login_required
+  #before_filter :login_required
   
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
   verify :method => :post, :only => [ :update_preferences, :update_password ],
