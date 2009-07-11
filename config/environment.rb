@@ -47,10 +47,10 @@ Rails::Initializer.run do |config|
     :source  => 'http://gems.github.com', 
     :version => '0.6.7'
   config.gem 'rspec', 
-    :version => '1.2.6', 
+    :version => '1.2.7', 
     :lib => false
   config.gem 'rspec-rails', 
-    :version => '1.2.6', 
+    :version => '1.2.7', 
     :lib => false
   config.gem "openrain-action_mailer_tls", 
     :lib => "smtp_tls.rb", 
