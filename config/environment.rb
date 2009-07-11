@@ -45,7 +45,7 @@ Rails::Initializer.run do |config|
   config.gem "thoughtbot-clearance", 
     :lib     => 'clearance', 
     :source  => 'http://gems.github.com', 
-    :version => '0.6.6'
+    :version => '0.6.7'
   config.gem 'rspec', 
     :version => '1.2.6', 
     :lib => false
