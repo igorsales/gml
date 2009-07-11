@@ -47,6 +47,14 @@ module ApplicationHelper
                &proc)
       concat("</fieldset>", proc.binding)               
   end
+  
+  def tab_class_for_controller_name(name)
+    if controller.controller_name == name 
+      ' class=\'activelink\''
+    else
+      ''
+    end
+  end
   # End Accessible Form Helper - provides accessible styling for all input forms
   
 end
